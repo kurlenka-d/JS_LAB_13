@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Variant1-6</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".add-row").click(function () {
+                var name = $("#name").val();
+                var count = $("#count").val();
+                var markup = "<tr><td>" + name + "</td><td>" + count + "</td></tr>";
+                $("table tbody").append(markup);
+            });
+
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <p>По двойному щелчку мыши в ячейке можно редактировать информацию в ней</p>
+    <br />
+    <form>
+        <input type="text" id="name" placeholder="Наименование товара">
+        <input type="text" id="count" placeholder="Количество">
+        <input type="button" class="add-row" value="Добавить данные">
+    </form>
+    <br />
+    <table border="1" width="100%" cellpadding="5" id="myTable">
+        <thead>
+            <tr>
+                <th>Наименование товара</th>
+                <th>Количество</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Samsung 757DFX</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Samtron 76DF</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Philips 107S20</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Sony E230</td>
+                <td> 6</td>
+            </tr>
+            <tr>
+                <td>Sony G220</td>
+                <td> 17</td>
+            </tr>
+            <tr>
+                <td>Hewlett Packard HP P920</td>
+                <td> 12</td>
+            </tr>
+            <tr>
+                <td>HP P1130</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>IBM I3</td>
+                <td>10</td>
+            </tr>
+        </tbody>
+        <script>
+            var tds = document.querySelectorAll('td');
+            for (var i = 0; i < tds.length; i++) {
+                tds[i].addEventListener('click', function func() {
+                    var
+                        input = document.createElement('input'); input.value = this.innerHTML; this.innerHTML = ''; this.appendChild(input); var
+                            td = this; input.addEventListener('blur', function () {
+                                td.innerHTML = this.value; td.addEventListener('click', func);
+                            }); this.removeEventListener('click', func);
+                });
+            }
+        </script>
+    </table>
+
+</body>
+
+</html>
